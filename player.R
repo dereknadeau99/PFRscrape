@@ -151,7 +151,7 @@ get_all_player_info = function() {
     
   }
   
-  write.csv('C:/Users/Derek/Documents/R/PFR/bad_urls.csv', row.names = FALSE)
+  write.csv(file.path(getwd(), '/PFRscrape/data/bad_urls.csv'), row.names = FALSE)
   
   return(players)
   

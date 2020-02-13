@@ -2,7 +2,7 @@ get_team_stats = function(year_range = NULL) {
   
   tryCatch({
     
-    data = read.csv(file = file.path("C:/Users/Derek/Documents/R/PFR/teamstats.csv"))
+    data = read.csv(file = file.path(getwd(), "/PFRscrape/data/teamstats.csv"))
     
   }, warning = function(err) {
     
@@ -24,15 +24,15 @@ get_team_stats = function(year_range = NULL) {
     }
     
     data = rbind(AFC, NFC)
-    write.csv(data, file.path(getwd(), "/R/Webscraping/teamstats.csv"), row.names = FALSE)
+    write.csv(data, file.path(getwd(), "/PFRscrape/data/teamstats.csv"), row.names = FALSE)
     
     n = 0;
-    while (!file.exists(file.path(getwd(), "/R/Webscraping/teamstats.csv")) & n < 10) {
+    while (!file.exists(file.path(getwd(), "/PFRscrape/data/teamstats.csv")) & n < 10) {
       Sys.sleep(1)
       n = n+1
     }
     
-    data = read.csv(file = file.path(getwd(), "/R/Webscraping/teamstats.csv"))
+    data = read.csv(file = file.path(getwd(), "/PFRscrape/data/teamstats.csv"))
     
   })
   

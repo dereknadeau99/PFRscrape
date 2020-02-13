@@ -1,0 +1,33 @@
+name,location,abbr,conf,div,pfrabbr
+Bills,Buffalo,BUF,AFC,East,buf
+Dolphins,Miami,MIA,AFC,East,mia
+Patriots,New England,NE,AFC,East,nwe
+Jets,New York,NYJ,AFC,East,nyj
+Ravens,Baltimore,BAL,AFC,North,rav
+Bengals,Cincinnati,CIN,AFC,North,cin
+Browns,Cleveland,CLE,AFC,North,cle
+Steelers,Pittsburgh,PIT,AFC,North,pit
+Texans,Houston,HOU,AFC,South,htx
+Colts,Indianapolis,IND,AFC,South,clt
+Jaguars,Jacksonville,JAX,AFC,South,jax
+Titans,Tennessee,TEN,AFC,South,oti
+Broncos,Denver,DEN,AFC,West,den
+Chiefs,Kansas,KC,AFC,West,kan
+Raiders,Las Vegas,LV,AFC,West,rai
+Chargers,Los Angeles,SD,AFC,West,sdg
+Cowboys,Dallas,DAL,NFC,East,dal
+Giants,New York,NYG,NFC,East,nyg
+Eagles,Philadelphia,PHI,NFC,East,phi
+Redskins,Washington,WAS,NFC,East,was
+Bears,Chicago,CHI,NFC,North,chi
+Lions,Detroit,DET,NFC,North,det
+Packers,Green,GB,NFC,North,gnb
+Vikings,Minnesota,MIN,NFC,North,min
+Falcons,Atlanta,ATL,NFC,South,atl
+Panthers,Carolina,CAR,NFC,South,car
+Saints,New,NO,NFC,South,nor
+Buccaneers,Tampa,TB,NFC,South,tam
+Cardinals,Arizona,ARI,NFC,West,crd
+49ers,San,SF,NFC,West,sfo
+Seahawks,Seattle,SEA,NFC,West,sea
+Rams,Los Angeles,LAR,NFC,West,ram

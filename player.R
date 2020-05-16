@@ -1,3 +1,5 @@
+path = "C:/Users/Derek/Desktop/Coding/PFRscrape/"
+
 get_all_player_urls = function() {
   
   url_array = c()
@@ -28,10 +30,10 @@ get_player = function(name = NULL, link = NULL) {
     # form url
     url = paste(
       'https://www.pro-football-reference.com/players/',
-      substring(name[[1]][2], 1, 1),
+      str_to_title(substring(name[[1]][2], 1, 1)),
       '/',
-      substring(name[[1]][2], 1, 4),
-      substring(name[[1]][1], 1, 2),
+      str_to_title(substring(name[[1]][2], 1, 4)),
+      str_to_title(substring(name[[1]][1], 1, 2)),
       '00.htm',
       sep = ""
     )
@@ -151,7 +153,7 @@ get_all_player_info = function() {
     
   }
   
-  write.csv(file.path(getwd(), '/PFRscrape/data/bad_urls.csv'), row.names = FALSE)
+  write.csv(file.path(path, 'data/bad_urls.csv'), row.names = FALSE)
   
   return(players)
   

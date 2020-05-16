@@ -1,10 +1,12 @@
+path = "C:/Users/Derek/Desktop/Coding/PFRscrape/"
+
 get_team_stats = function(year_range = NULL) {
   
-  tryCatch({
+ ## tryCatch({
     
-    data = read.csv(file = file.path(getwd(), "/PFRscrape/data/teamstats.csv"))
+   # data = read.csv(file = file.path(path, "data/teamstats.csv"))
     
-  }, warning = function(err) {
+ ## }, warning = function(err) {
     
     AFC = c()
     NFC = c()
@@ -15,26 +17,37 @@ get_team_stats = function(year_range = NULL) {
       url = paste('https://www.pro-football-reference.com/years/', as.character(year), '/', sep = "")
       html = read_html(url)
       
-      temp = (html_table(x = html, header = TRUE) %>% .[[1]] %>% as_tibble())[ -c(1,6,11,16), ]
+      temp = (html_table(x = html, header = TRUE) %>% .[[1]] %>% as_tibble())[]
       AFC = format_data(AFC, temp, year)
       
-      temp = (html_table(x = html, header = TRUE) %>% .[[2]] %>% as_tibble())[ -c(1,6,11,16), ]
+      temp = (html_table(x = html, header = TRUE) %>% .[[2]] %>% as_tibble())[]
       temp %>% add_column(year = year)
       NFC = format_data(NFC, temp, year)
     }
     
     data = rbind(AFC, NFC)
-    write.csv(data, file.path(getwd(), "/PFRscrape/data/teamstats.csv"), row.names = FALSE)
+    write.csv(data, file.path(path, "data/teamstats.csv"), row.names = FALSE)
     
     n = 0;
-    while (!file.exists(file.path(getwd(), "/PFRscrape/data/teamstats.csv")) & n < 10) {
+    while (!file.exists(file.path(path, "data/teamstats.csv")) & n < 10) {
       Sys.sleep(1)
       n = n+1
     }
     
-    data = read.csv(file = file.path(getwd(), "/PFRscrape/data/teamstats.csv"))
+    data = read.csv(file = file.path(path, "data/teamstats.csv"))
     
-  })
+ # })
+    
+    rem = c()
+    for (row in 1:nrow(data)) {
+      
+      if (grepl("AFC", data$Tm, ignore.case = TRUE) || grepl("NFC", data$Tm, ignore.case = TRUE)) {
+        rem = c(rem, row)
+      }
+      
+    }
+    
+    #data = data[-rem,]
   
   return(data)
   
@@ -103,7 +116,7 @@ team_summary = function(name = NULL) {
   
   if (!is.null(name)) { 
     
-    team = filter(data, data$Tm == name)
+    team = filter(teamstats, teamstats$Tm == name)
     
     for (i in 1:32) {
       if (teams$abbr[i] == name) {
@@ -134,5 +147,6 @@ find_team = function(s = NULL) {
   }
   
   print("Team could not be found.")
+  return(NULL)
   
 }

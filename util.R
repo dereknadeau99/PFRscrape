@@ -5,7 +5,7 @@ scatterplot  = function(data, x, y) {
     y = as.numeric(y)
   )) + 
     geom_point(aes(
-      fill = data$L
+      fill = data$year
     )) +
     scale_x_continuous(
       breaks = c(0:16)
@@ -16,6 +16,7 @@ scatterplot  = function(data, x, y) {
     )
   return(p)
 }
+
 getmode      = function(v) {
   uniqv <- unique(v)
   uniqv[which.max(tabulate(match(v, uniqv)))]
